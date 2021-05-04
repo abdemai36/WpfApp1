@@ -1,0 +1,19 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.Forms"
+        xmlns:Viewer="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer" x:Class="WpfApp1.Forms.Form_Reservation_Repport"
+        mc:Ignorable="d"
+        Title="Form_Reservation_Repport" Height="740.275" Width="1023">
+    <Grid Loaded="Grid_Loaded" Margin="0,97,297,-241">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="391*"/>
+            <ColumnDefinition Width="401*"/>
+        </Grid.ColumnDefinitions>
+
+        <Viewer:CrystalReportsViewer x:Name="CrystalViewer_Reservation"  Margin="0,-116,-295,0" Height="707" VerticalAlignment="Top" HorizontalAlignment="Right" Width="1012" Grid.ColumnSpan="2"/>
+
+    </Grid>
+</Window>

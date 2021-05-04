@@ -1,0 +1,808 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_LocationVoituresModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Assurance">
+          <Key>
+            <PropertyRef Name="ID_Assurance" />
+          </Key>
+          <Property Name="ID_Assurance" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Voiture" Type="int" Nullable="false" />
+          <Property Name="Date_D" Type="date" />
+          <Property Name="Date_F" Type="date" />
+          <Property Name="Agence_VT" Type="nvarchar" MaxLength="50" />
+          <Property Name="Montent" Type="money" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ID_Client" />
+          </Key>
+          <Property Name="ID_Client" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prenom" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adresse" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateNaissance" Type="date" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Num_Permis" Type="int" />
+          <Property Name="Date_Delivre" Type="date" />
+          <Property Name="Date_Validite" Type="date" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Piece_Identite" Type="nvarchar" MaxLength="10" />
+          <Property Name="Num_Identite" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Contrat">
+          <Key>
+            <PropertyRef Name="ID_Contrat" />
+          </Key>
+          <Property Name="ID_Contrat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date_D_Contrat" Type="date" />
+          <Property Name="Nombre_Jours" Type="int" />
+          <Property Name="Date_F_Contrat" Type="date" />
+          <Property Name="ID_Voiture" Type="int" />
+          <Property Name="ID_Client" Type="int" />
+          <Property Name="Type_Location" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrixPar_Jour" Type="money" />
+          <Property Name="Montant" Type="money" />
+          <Property Name="Paiement" Type="money" />
+        </EntityType>
+        <EntityType Name="Details">
+          <Key>
+            <PropertyRef Name="ID_Details" />
+          </Key>
+          <Property Name="ID_Details" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="pass" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date_Entree" Type="date" />
+          <Property Name="time_Entree" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'DB_LocationVoitures.dbo.Info_agence' ; en outre, aucune clé primaire valide n'a pu être déduite. Cette table/vue a été exclue. Pour utiliser l'entité, vous devez passer en revue votre schéma, ajouter les clés appropriées et supprimer le commentaire associé.
+        <EntityType Name="Info_agence">
+          <Property Name="ID_agence" Type="int" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ville" Type="nvarchar" MaxLength="50" />
+          <Property Name="Devicce" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tele" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adresse" Type="nvarchar" MaxLength="100" />
+        </EntityType>-->
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="ID_Member" />
+          </Key>
+          <Property Name="ID_Member" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mot_de_passe" Type="nvarchar" MaxLength="50" />
+          <Property Name="Admin_O_No" Type="int" />
+        </EntityType>
+        <EntityType Name="Marque">
+          <Key>
+            <PropertyRef Name="ID_Marque" />
+          </Key>
+          <Property Name="ID_Marque" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Libelle_Marque" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="ID_Model" />
+          </Key>
+          <Property Name="ID_Model" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Libelle_Model" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_Marque" Type="int" />
+        </EntityType>
+        <EntityType Name="Resevation">
+          <Key>
+            <PropertyRef Name="ID_Reservation" />
+          </Key>
+          <Property Name="ID_Reservation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Client" Type="int" Nullable="false" />
+          <Property Name="ID_Marque" Type="int" Nullable="false" />
+          <Property Name="ID_Model" Type="int" Nullable="false" />
+          <Property Name="Avance" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Date_D" Type="date" />
+          <Property Name="Nomber_Jours" Type="int" />
+          <Property Name="Date_F" Type="date" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Visit_Technique">
+          <Key>
+            <PropertyRef Name="ID_visit_Technique" />
+          </Key>
+          <Property Name="ID_visit_Technique" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Voiture" Type="int" Nullable="false" />
+          <Property Name="Date_D" Type="date" />
+          <Property Name="Date_F" Type="date" />
+          <Property Name="Agence_VT" Type="nvarchar" MaxLength="50" />
+          <Property Name="Montent" Type="money" />
+        </EntityType>
+        <EntityType Name="Voitures">
+          <Key>
+            <PropertyRef Name="ID_Voiture" />
+          </Key>
+          <Property Name="ID_Voiture" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Matricule" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Marque" Type="int" />
+          <Property Name="ID_Model" Type="int" />
+          <Property Name="PrixPar_Heur" Type="money" />
+          <Property Name="PrixPar_Jour" Type="money" />
+          <Property Name="Etat" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="images" Type="varchar" MaxLength="100" />
+          <Property Name="color" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nombre_Place" Type="int" />
+        </EntityType>
+        <Association Name="FK_Assurance_Voitures">
+          <End Role="Voitures" Type="Self.Voitures" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Assurance" Type="Self.Assurance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voitures">
+              <PropertyRef Name="ID_Voiture" />
+            </Principal>
+            <Dependent Role="Assurance">
+              <PropertyRef Name="ID_Voiture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contrat_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contrat" Type="Self.Contrat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID_Client" />
+            </Principal>
+            <Dependent Role="Contrat">
+              <PropertyRef Name="ID_Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contrat_Voitures">
+          <End Role="Voitures" Type="Self.Voitures" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contrat" Type="Self.Contrat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voitures">
+              <PropertyRef Name="ID_Voiture" />
+            </Principal>
+            <Dependent Role="Contrat">
+              <PropertyRef Name="ID_Voiture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Model_Marque">
+          <End Role="Marque" Type="Self.Marque" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Model" Type="Self.Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marque">
+              <PropertyRef Name="ID_Marque" />
+            </Principal>
+            <Dependent Role="Model">
+              <PropertyRef Name="ID_Marque" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resevation_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Resevation" Type="Self.Resevation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID_Client" />
+            </Principal>
+            <Dependent Role="Resevation">
+              <PropertyRef Name="ID_Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resevation_Marque">
+          <End Role="Marque" Type="Self.Marque" Multiplicity="1" />
+          <End Role="Resevation" Type="Self.Resevation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marque">
+              <PropertyRef Name="ID_Marque" />
+            </Principal>
+            <Dependent Role="Resevation">
+              <PropertyRef Name="ID_Marque" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resevation_Model">
+          <End Role="Model" Type="Self.Model" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Resevation" Type="Self.Resevation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="ID_Model" />
+            </Principal>
+            <Dependent Role="Resevation">
+              <PropertyRef Name="ID_Model" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Visit_Technique_Voitures">
+          <End Role="Voitures" Type="Self.Voitures" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Visit_Technique" Type="Self.Visit_Technique" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voitures">
+              <PropertyRef Name="ID_Voiture" />
+            </Principal>
+            <Dependent Role="Visit_Technique">
+              <PropertyRef Name="ID_Voiture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Voitures_Marque">
+          <End Role="Marque" Type="Self.Marque" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Voitures" Type="Self.Voitures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marque">
+              <PropertyRef Name="ID_Marque" />
+            </Principal>
+            <Dependent Role="Voitures">
+              <PropertyRef Name="ID_Marque" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_LocationVoituresModelStoreContainer">
+          <EntitySet Name="Assurance" EntityType="Self.Assurance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contrat" EntityType="Self.Contrat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Details" EntityType="Self.Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marque" EntityType="Self.Marque" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Model" EntityType="Self.Model" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Resevation" EntityType="Self.Resevation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Visit_Technique" EntityType="Self.Visit_Technique" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Voitures" EntityType="Self.Voitures" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Assurance_Voitures" Association="Self.FK_Assurance_Voitures">
+            <End Role="Voitures" EntitySet="Voitures" />
+            <End Role="Assurance" EntitySet="Assurance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contrat_Client" Association="Self.FK_Contrat_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Contrat" EntitySet="Contrat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contrat_Voitures" Association="Self.FK_Contrat_Voitures">
+            <End Role="Voitures" EntitySet="Voitures" />
+            <End Role="Contrat" EntitySet="Contrat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Model_Marque" Association="Self.FK_Model_Marque">
+            <End Role="Marque" EntitySet="Marque" />
+            <End Role="Model" EntitySet="Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resevation_Client" Association="Self.FK_Resevation_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Resevation" EntitySet="Resevation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resevation_Marque" Association="Self.FK_Resevation_Marque">
+            <End Role="Marque" EntitySet="Marque" />
+            <End Role="Resevation" EntitySet="Resevation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resevation_Model" Association="Self.FK_Resevation_Model">
+            <End Role="Model" EntitySet="Model" />
+            <End Role="Resevation" EntitySet="Resevation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Visit_Technique_Voitures" Association="Self.FK_Visit_Technique_Voitures">
+            <End Role="Voitures" EntitySet="Voitures" />
+            <End Role="Visit_Technique" EntitySet="Visit_Technique" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Voitures_Marque" Association="Self.FK_Voitures_Marque">
+            <End Role="Marque" EntitySet="Marque" />
+            <End Role="Voitures" EntitySet="Voitures" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_LocationVoituresModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DB_LocationVoituresEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Assurances" EntityType="DB_LocationVoituresModel.Assurance" />
+          <EntitySet Name="Clients" EntityType="DB_LocationVoituresModel.Client" />
+          <EntitySet Name="Contrats" EntityType="DB_LocationVoituresModel.Contrat" />
+          <EntitySet Name="Details" EntityType="DB_LocationVoituresModel.Detail" />
+          <EntitySet Name="Logins" EntityType="DB_LocationVoituresModel.Login" />
+          <EntitySet Name="Marques" EntityType="DB_LocationVoituresModel.Marque" />
+          <EntitySet Name="Models" EntityType="DB_LocationVoituresModel.Model" />
+          <EntitySet Name="Resevations" EntityType="DB_LocationVoituresModel.Resevation" />
+          <EntitySet Name="sysdiagrams" EntityType="DB_LocationVoituresModel.sysdiagram" />
+          <EntitySet Name="Visit_Technique" EntityType="DB_LocationVoituresModel.Visit_Technique" />
+          <EntitySet Name="Voitures" EntityType="DB_LocationVoituresModel.Voiture" />
+          <AssociationSet Name="FK_Assurance_Voitures" Association="DB_LocationVoituresModel.FK_Assurance_Voitures">
+            <End Role="Voiture" EntitySet="Voitures" />
+            <End Role="Assurance" EntitySet="Assurances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contrat_Client" Association="DB_LocationVoituresModel.FK_Contrat_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Contrat" EntitySet="Contrats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resevation_Client" Association="DB_LocationVoituresModel.FK_Resevation_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Resevation" EntitySet="Resevations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contrat_Voitures" Association="DB_LocationVoituresModel.FK_Contrat_Voitures">
+            <End Role="Voiture" EntitySet="Voitures" />
+            <End Role="Contrat" EntitySet="Contrats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Model_Marque" Association="DB_LocationVoituresModel.FK_Model_Marque">
+            <End Role="Marque" EntitySet="Marques" />
+            <End Role="Model" EntitySet="Models" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resevation_Marque" Association="DB_LocationVoituresModel.FK_Resevation_Marque">
+            <End Role="Marque" EntitySet="Marques" />
+            <End Role="Resevation" EntitySet="Resevations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Voitures_Marque" Association="DB_LocationVoituresModel.FK_Voitures_Marque">
+            <End Role="Marque" EntitySet="Marques" />
+            <End Role="Voiture" EntitySet="Voitures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resevation_Model" Association="DB_LocationVoituresModel.FK_Resevation_Model">
+            <End Role="Model" EntitySet="Models" />
+            <End Role="Resevation" EntitySet="Resevations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Visit_Technique_Voitures" Association="DB_LocationVoituresModel.FK_Visit_Technique_Voitures">
+            <End Role="Voiture" EntitySet="Voitures" />
+            <End Role="Visit_Technique" EntitySet="Visit_Technique" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Assurance">
+          <Key>
+            <PropertyRef Name="ID_Assurance" />
+          </Key>
+          <Property Name="ID_Assurance" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Voiture" Type="Int32" Nullable="false" />
+          <Property Name="Date_D" Type="DateTime" Precision="0" />
+          <Property Name="Date_F" Type="DateTime" Precision="0" />
+          <Property Name="Agence_VT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Montent" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Voiture" Relationship="DB_LocationVoituresModel.FK_Assurance_Voitures" FromRole="Assurance" ToRole="Voiture" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ID_Client" />
+          </Key>
+          <Property Name="ID_Client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adresse" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateNaissance" Type="DateTime" Precision="0" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Num_Permis" Type="Int32" />
+          <Property Name="Date_Delivre" Type="DateTime" Precision="0" />
+          <Property Name="Date_Validite" Type="DateTime" Precision="0" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Piece_Identite" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Num_Identite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contrats" Relationship="DB_LocationVoituresModel.FK_Contrat_Client" FromRole="Client" ToRole="Contrat" />
+          <NavigationProperty Name="Resevations" Relationship="DB_LocationVoituresModel.FK_Resevation_Client" FromRole="Client" ToRole="Resevation" />
+        </EntityType>
+        <EntityType Name="Contrat">
+          <Key>
+            <PropertyRef Name="ID_Contrat" />
+          </Key>
+          <Property Name="ID_Contrat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date_D_Contrat" Type="DateTime" Precision="0" />
+          <Property Name="Nombre_Jours" Type="Int32" />
+          <Property Name="Date_F_Contrat" Type="DateTime" Precision="0" />
+          <Property Name="ID_Voiture" Type="Int32" />
+          <Property Name="ID_Client" Type="Int32" />
+          <Property Name="Type_Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrixPar_Jour" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Montant" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Paiement" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Client" Relationship="DB_LocationVoituresModel.FK_Contrat_Client" FromRole="Contrat" ToRole="Client" />
+          <NavigationProperty Name="Voiture" Relationship="DB_LocationVoituresModel.FK_Contrat_Voitures" FromRole="Contrat" ToRole="Voiture" />
+        </EntityType>
+        <EntityType Name="Detail">
+          <Key>
+            <PropertyRef Name="ID_Details" />
+          </Key>
+          <Property Name="ID_Details" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Entree" Type="DateTime" Precision="0" />
+          <Property Name="time_Entree" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="ID_Member" />
+          </Key>
+          <Property Name="ID_Member" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mot_de_passe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Admin_O_No" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Marque">
+          <Key>
+            <PropertyRef Name="ID_Marque" />
+          </Key>
+          <Property Name="ID_Marque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Libelle_Marque" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Models" Relationship="DB_LocationVoituresModel.FK_Model_Marque" FromRole="Marque" ToRole="Model" />
+          <NavigationProperty Name="Resevations" Relationship="DB_LocationVoituresModel.FK_Resevation_Marque" FromRole="Marque" ToRole="Resevation" />
+          <NavigationProperty Name="Voitures" Relationship="DB_LocationVoituresModel.FK_Voitures_Marque" FromRole="Marque" ToRole="Voiture" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="ID_Model" />
+          </Key>
+          <Property Name="ID_Model" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Libelle_Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Marque" Type="Int32" />
+          <NavigationProperty Name="Marque" Relationship="DB_LocationVoituresModel.FK_Model_Marque" FromRole="Model" ToRole="Marque" />
+          <NavigationProperty Name="Resevations" Relationship="DB_LocationVoituresModel.FK_Resevation_Model" FromRole="Model" ToRole="Resevation" />
+        </EntityType>
+        <EntityType Name="Resevation">
+          <Key>
+            <PropertyRef Name="ID_Reservation" />
+          </Key>
+          <Property Name="ID_Reservation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Client" Type="Int32" Nullable="false" />
+          <Property Name="ID_Marque" Type="Int32" Nullable="false" />
+          <Property Name="ID_Model" Type="Int32" Nullable="false" />
+          <Property Name="Avance" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Date_D" Type="DateTime" Precision="0" />
+          <Property Name="Nomber_Jours" Type="Int32" />
+          <Property Name="Date_F" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Client" Relationship="DB_LocationVoituresModel.FK_Resevation_Client" FromRole="Resevation" ToRole="Client" />
+          <NavigationProperty Name="Marque" Relationship="DB_LocationVoituresModel.FK_Resevation_Marque" FromRole="Resevation" ToRole="Marque" />
+          <NavigationProperty Name="Model" Relationship="DB_LocationVoituresModel.FK_Resevation_Model" FromRole="Resevation" ToRole="Model" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Visit_Technique">
+          <Key>
+            <PropertyRef Name="ID_visit_Technique" />
+          </Key>
+          <Property Name="ID_visit_Technique" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Voiture" Type="Int32" Nullable="false" />
+          <Property Name="Date_D" Type="DateTime" Precision="0" />
+          <Property Name="Date_F" Type="DateTime" Precision="0" />
+          <Property Name="Agence_VT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Montent" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Voiture" Relationship="DB_LocationVoituresModel.FK_Visit_Technique_Voitures" FromRole="Visit_Technique" ToRole="Voiture" />
+        </EntityType>
+        <EntityType Name="Voiture">
+          <Key>
+            <PropertyRef Name="ID_Voiture" />
+          </Key>
+          <Property Name="ID_Voiture" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Matricule" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Marque" Type="Int32" />
+          <Property Name="ID_Model" Type="Int32" />
+          <Property Name="PrixPar_Heur" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PrixPar_Jour" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Etat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="images" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre_Place" Type="Int32" />
+          <NavigationProperty Name="Assurances" Relationship="DB_LocationVoituresModel.FK_Assurance_Voitures" FromRole="Voiture" ToRole="Assurance" />
+          <NavigationProperty Name="Contrats" Relationship="DB_LocationVoituresModel.FK_Contrat_Voitures" FromRole="Voiture" ToRole="Contrat" />
+          <NavigationProperty Name="Marque" Relationship="DB_LocationVoituresModel.FK_Voitures_Marque" FromRole="Voiture" ToRole="Marque" />
+          <NavigationProperty Name="Visit_Technique" Relationship="DB_LocationVoituresModel.FK_Visit_Technique_Voitures" FromRole="Voiture" ToRole="Visit_Technique" />
+        </EntityType>
+        <Association Name="FK_Assurance_Voitures">
+          <End Type="DB_LocationVoituresModel.Voiture" Role="Voiture" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DB_LocationVoituresModel.Assurance" Role="Assurance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voiture">
+              <PropertyRef Name="ID_Voiture" />
+            </Principal>
+            <Dependent Role="Assurance">
+              <PropertyRef Name="ID_Voiture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contrat_Client">
+          <End Type="DB_LocationVoituresModel.Client" Role="Client" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DB_LocationVoituresModel.Contrat" Role="Contrat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID_Client" />
+            </Principal>
+            <Dependent Role="Contrat">
+              <PropertyRef Name="ID_Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resevation_Client">
+          <End Type="DB_LocationVoituresModel.Client" Role="Client" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DB_LocationVoituresModel.Resevation" Role="Resevation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID_Client" />
+            </Principal>
+            <Dependent Role="Resevation">
+              <PropertyRef Name="ID_Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contrat_Voitures">
+          <End Type="DB_LocationVoituresModel.Voiture" Role="Voiture" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DB_LocationVoituresModel.Contrat" Role="Contrat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voiture">
+              <PropertyRef Name="ID_Voiture" />
+            </Principal>
+            <Dependent Role="Contrat">
+              <PropertyRef Name="ID_Voiture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Model_Marque">
+          <End Type="DB_LocationVoituresModel.Marque" Role="Marque" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DB_LocationVoituresModel.Model" Role="Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marque">
+              <PropertyRef Name="ID_Marque" />
+            </Principal>
+            <Dependent Role="Model">
+              <PropertyRef Name="ID_Marque" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resevation_Marque">
+          <End Type="DB_LocationVoituresModel.Marque" Role="Marque" Multiplicity="1" />
+          <End Type="DB_LocationVoituresModel.Resevation" Role="Resevation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marque">
+              <PropertyRef Name="ID_Marque" />
+            </Principal>
+            <Dependent Role="Resevation">
+              <PropertyRef Name="ID_Marque" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Voitures_Marque">
+          <End Type="DB_LocationVoituresModel.Marque" Role="Marque" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DB_LocationVoituresModel.Voiture" Role="Voiture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marque">
+              <PropertyRef Name="ID_Marque" />
+            </Principal>
+            <Dependent Role="Voiture">
+              <PropertyRef Name="ID_Marque" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resevation_Model">
+          <End Type="DB_LocationVoituresModel.Model" Role="Model" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DB_LocationVoituresModel.Resevation" Role="Resevation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="ID_Model" />
+            </Principal>
+            <Dependent Role="Resevation">
+              <PropertyRef Name="ID_Model" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Visit_Technique_Voitures">
+          <End Type="DB_LocationVoituresModel.Voiture" Role="Voiture" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DB_LocationVoituresModel.Visit_Technique" Role="Visit_Technique" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voiture">
+              <PropertyRef Name="ID_Voiture" />
+            </Principal>
+            <Dependent Role="Visit_Technique">
+              <PropertyRef Name="ID_Voiture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_LocationVoituresModelStoreContainer" CdmEntityContainer="DB_LocationVoituresEntities1">
+          <EntitySetMapping Name="Assurances">
+            <EntityTypeMapping TypeName="DB_LocationVoituresModel.Assurance">
+              <MappingFragment StoreEntitySet="Assurance">
+                <ScalarProperty Name="Montent" ColumnName="Montent" />
+                <ScalarProperty Name="Agence_VT" ColumnName="Agence_VT" />
+                <ScalarProperty Name="Date_F" ColumnName="Date_F" />
+                <ScalarProperty Name="Date_D" ColumnName="Date_D" />
+                <ScalarProperty Name="ID_Voiture" ColumnName="ID_Voiture" />
+                <ScalarProperty Name="ID_Assurance" ColumnName="ID_Assurance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="DB_LocationVoituresModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="Num_Identite" ColumnName="Num_Identite" />
+                <ScalarProperty Name="Piece_Identite" ColumnName="Piece_Identite" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Date_Validite" ColumnName="Date_Validite" />
+                <ScalarProperty Name="Date_Delivre" ColumnName="Date_Delivre" />
+                <ScalarProperty Name="Num_Permis" ColumnName="Num_Permis" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="DateNaissance" ColumnName="DateNaissance" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="ID_Client" ColumnName="ID_Client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contrats">
+            <EntityTypeMapping TypeName="DB_LocationVoituresModel.Contrat">
+              <MappingFragment StoreEntitySet="Contrat">
+                <ScalarProperty Name="Paiement" ColumnName="Paiement" />
+                <ScalarProperty Name="Montant" ColumnName="Montant" />
+                <ScalarProperty Name="PrixPar_Jour" ColumnName="PrixPar_Jour" />
+                <ScalarProperty Name="Type_Location" ColumnName="Type_Location" />
+                <ScalarProperty Name="ID_Client" ColumnName="ID_Client" />
+                <ScalarProperty Name="ID_Voiture" ColumnName="ID_Voiture" />
+                <ScalarProperty Name="Date_F_Contrat" ColumnName="Date_F_Contrat" />
+                <ScalarProperty Name="Nombre_Jours" ColumnName="Nombre_Jours" />
+                <ScalarProperty Name="Date_D_Contrat" ColumnName="Date_D_Contrat" />
+                <ScalarProperty Name="ID_Contrat" ColumnName="ID_Contrat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Details">
+            <EntityTypeMapping TypeName="DB_LocationVoituresModel.Detail">
+              <MappingFragment StoreEntitySet="Details">
+                <ScalarProperty Name="time_Entree" ColumnName="time_Entree" />
+                <ScalarProperty Name="Date_Entree" ColumnName="Date_Entree" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="ID_Details" ColumnName="ID_Details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="DB_LocationVoituresModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="Admin_O_No" ColumnName="Admin_O_No" />
+                <ScalarProperty Name="Mot_de_passe" ColumnName="Mot_de_passe" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="ID_Member" ColumnName="ID_Member" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marques">
+            <EntityTypeMapping TypeName="DB_LocationVoituresModel.Marque">
+              <MappingFragment StoreEntitySet="Marque">
+                <ScalarProperty Name="Libelle_Marque" ColumnName="Libelle_Marque" />
+                <ScalarProperty Name="ID_Marque" ColumnName="ID_Marque" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Models">
+            <EntityTypeMapping TypeName="DB_LocationVoituresModel.Model">
+              <MappingFragment StoreEntitySet="Model">
+                <ScalarProperty Name="ID_Marque" ColumnName="ID_Marque" />
+                <ScalarProperty Name="Libelle_Model" ColumnName="Libelle_Model" />
+                <ScalarProperty Name="ID_Model" ColumnName="ID_Model" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Resevations">
+            <EntityTypeMapping TypeName="DB_LocationVoituresModel.Resevation">
+              <MappingFragment StoreEntitySet="Resevation">
+                <ScalarProperty Name="Date_F" ColumnName="Date_F" />
+                <ScalarProperty Name="Nomber_Jours" ColumnName="Nomber_Jours" />
+                <ScalarProperty Name="Date_D" ColumnName="Date_D" />
+                <ScalarProperty Name="Avance" ColumnName="Avance" />
+                <ScalarProperty Name="ID_Model" ColumnName="ID_Model" />
+                <ScalarProperty Name="ID_Marque" ColumnName="ID_Marque" />
+                <ScalarProperty Name="ID_Client" ColumnName="ID_Client" />
+                <ScalarProperty Name="ID_Reservation" ColumnName="ID_Reservation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DB_LocationVoituresModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Visit_Technique">
+            <EntityTypeMapping TypeName="DB_LocationVoituresModel.Visit_Technique">
+              <MappingFragment StoreEntitySet="Visit_Technique">
+                <ScalarProperty Name="Montent" ColumnName="Montent" />
+                <ScalarProperty Name="Agence_VT" ColumnName="Agence_VT" />
+                <ScalarProperty Name="Date_F" ColumnName="Date_F" />
+                <ScalarProperty Name="Date_D" ColumnName="Date_D" />
+                <ScalarProperty Name="ID_Voiture" ColumnName="ID_Voiture" />
+                <ScalarProperty Name="ID_visit_Technique" ColumnName="ID_visit_Technique" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Voitures">
+            <EntityTypeMapping TypeName="DB_LocationVoituresModel.Voiture">
+              <MappingFragment StoreEntitySet="Voitures">
+                <ScalarProperty Name="Nombre_Place" ColumnName="Nombre_Place" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="images" ColumnName="images" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Etat" ColumnName="Etat" />
+                <ScalarProperty Name="PrixPar_Jour" ColumnName="PrixPar_Jour" />
+                <ScalarProperty Name="PrixPar_Heur" ColumnName="PrixPar_Heur" />
+                <ScalarProperty Name="ID_Model" ColumnName="ID_Model" />
+                <ScalarProperty Name="ID_Marque" ColumnName="ID_Marque" />
+                <ScalarProperty Name="Matricule" ColumnName="Matricule" />
+                <ScalarProperty Name="ID_Voiture" ColumnName="ID_Voiture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

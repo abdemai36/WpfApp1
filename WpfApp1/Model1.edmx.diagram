@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="54623842cdee4bdda35932ec652e5145" Name="Diagram1" ZoomLevel="42">
+        <EntityTypeShape EntityType="DB_LocationVoituresModel.Assurance" Width="1.5" PointX="5.25" PointY="5.875" />
+        <EntityTypeShape EntityType="DB_LocationVoituresModel.Client" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="DB_LocationVoituresModel.Contrat" Width="1.5" PointX="8.25" PointY="7" />
+        <EntityTypeShape EntityType="DB_LocationVoituresModel.Detail" Width="1.5" PointX="0.75" PointY="2.5" />
+        <EntityTypeShape EntityType="DB_LocationVoituresModel.Login" Width="1.5" PointX="2.75" PointY="2.5" />
+        <EntityTypeShape EntityType="DB_LocationVoituresModel.Marque" Width="1.5" PointX="0.75" PointY="9" />
+        <EntityTypeShape EntityType="DB_LocationVoituresModel.Model" Width="1.5" PointX="3" PointY="12.125" />
+        <EntityTypeShape EntityType="DB_LocationVoituresModel.Resevation" Width="1.5" PointX="5.25" PointY="9" />
+        <EntityTypeShape EntityType="DB_LocationVoituresModel.sysdiagram" Width="1.5" PointX="8.75" PointY="2.5" />
+        <EntityTypeShape EntityType="DB_LocationVoituresModel.Visit_Technique" Width="1.5" PointX="5.25" PointY="13" />
+        <EntityTypeShape EntityType="DB_LocationVoituresModel.Voiture" Width="1.5" PointX="3" PointY="6.625" />
+        <AssociationConnector Association="DB_LocationVoituresModel.FK_Assurance_Voitures" />
+        <AssociationConnector Association="DB_LocationVoituresModel.FK_Contrat_Client" />
+        <AssociationConnector Association="DB_LocationVoituresModel.FK_Resevation_Client" />
+        <AssociationConnector Association="DB_LocationVoituresModel.FK_Contrat_Voitures" />
+        <AssociationConnector Association="DB_LocationVoituresModel.FK_Model_Marque" />
+        <AssociationConnector Association="DB_LocationVoituresModel.FK_Resevation_Marque" />
+        <AssociationConnector Association="DB_LocationVoituresModel.FK_Voitures_Marque" />
+        <AssociationConnector Association="DB_LocationVoituresModel.FK_Resevation_Model" />
+        <AssociationConnector Association="DB_LocationVoituresModel.FK_Visit_Technique_Voitures" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet_Reservation" targetNamespace="http://tempuri.org/DataSet_Reservation.xsd" xmlns:mstns="http://tempuri.org/DataSet_Reservation.xsd" xmlns="http://tempuri.org/DataSet_Reservation.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="DB_LocationVoituresConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DB_LocationVoituresConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.WpfApp1.Properties.Settings.GlobalReference.Default.DB_LocationVoituresConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="List_ReservationsTableAdapter" GeneratorDataComponentClassName="List_ReservationsTableAdapter" Name="List_Reservations" UserDataComponentName="List_ReservationsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DB_LocationVoituresConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Resevation.ID_Reservation, Client.Nom, Client.Prenom, Voitures.Marque, Resevation.Avance, Resevation.Date_D, Resevation.Date_F, Resevation.Nomber_Jours
+FROM            Client INNER JOIN
+                         Resevation ON Client.ID_Client = Resevation.ID_Client INNER JOIN
+                         Voitures ON Resevation.ID_Voiture = Voitures.ID_Voiture</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID_Reservation" DataSetColumn="ID_Reservation" />
+              <Mapping SourceColumn="Nom" DataSetColumn="Nom" />
+              <Mapping SourceColumn="Prenom" DataSetColumn="Prenom" />
+              <Mapping SourceColumn="Marque" DataSetColumn="Marque" />
+              <Mapping SourceColumn="Avance" DataSetColumn="Avance" />
+              <Mapping SourceColumn="Date_D" DataSetColumn="Date_D" />
+              <Mapping SourceColumn="Date_F" DataSetColumn="Date_F" />
+              <Mapping SourceColumn="Nomber_Jours" DataSetColumn="Nomber_Jours" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet_Reservation" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet_Reservation" msprop:Generator_UserDSName="DataSet_Reservation">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="List_Reservations" msprop:Generator_TableClassName="List_ReservationsDataTable" msprop:Generator_TableVarName="tableList_Reservations" msprop:Generator_TablePropName="List_Reservations" msprop:Generator_RowDeletingName="List_ReservationsRowDeleting" msprop:Generator_RowChangingName="List_ReservationsRowChanging" msprop:Generator_RowEvHandlerName="List_ReservationsRowChangeEventHandler" msprop:Generator_RowDeletedName="List_ReservationsRowDeleted" msprop:Generator_UserTableName="List_Reservations" msprop:Generator_RowChangedName="List_ReservationsRowChanged" msprop:Generator_RowEvArgName="List_ReservationsRowChangeEvent" msprop:Generator_RowClassName="List_ReservationsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_Reservation" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID_Reservation" msprop:Generator_ColumnPropNameInRow="ID_Reservation" msprop:Generator_ColumnPropNameInTable="ID_ReservationColumn" msprop:Generator_UserColumnName="ID_Reservation" type="xs:int" />
+              <xs:element name="Nom" msprop:Generator_ColumnVarNameInTable="columnNom" msprop:Generator_ColumnPropNameInRow="Nom" msprop:Generator_ColumnPropNameInTable="NomColumn" msprop:Generator_UserColumnName="Nom" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Prenom" msprop:Generator_ColumnVarNameInTable="columnPrenom" msprop:Generator_ColumnPropNameInRow="Prenom" msprop:Generator_ColumnPropNameInTable="PrenomColumn" msprop:Generator_UserColumnName="Prenom" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Marque" msprop:Generator_ColumnVarNameInTable="columnMarque" msprop:Generator_ColumnPropNameInRow="Marque" msprop:Generator_ColumnPropNameInTable="MarqueColumn" msprop:Generator_UserColumnName="Marque" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Avance" msprop:Generator_ColumnVarNameInTable="columnAvance" msprop:Generator_ColumnPropNameInRow="Avance" msprop:Generator_ColumnPropNameInTable="AvanceColumn" msprop:Generator_UserColumnName="Avance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Date_D" msprop:Generator_ColumnVarNameInTable="columnDate_D" msprop:Generator_ColumnPropNameInRow="Date_D" msprop:Generator_ColumnPropNameInTable="Date_DColumn" msprop:Generator_UserColumnName="Date_D" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Date_F" msprop:Generator_ColumnVarNameInTable="columnDate_F" msprop:Generator_ColumnPropNameInRow="Date_F" msprop:Generator_ColumnPropNameInTable="Date_FColumn" msprop:Generator_UserColumnName="Date_F" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Nomber_Jours" msprop:Generator_ColumnVarNameInTable="columnNomber_Jours" msprop:Generator_ColumnPropNameInRow="Nomber_Jours" msprop:Generator_ColumnPropNameInTable="Nomber_JoursColumn" msprop:Generator_UserColumnName="Nomber_Jours" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:List_Reservations" />
+      <xs:field xpath="mstns:ID_Reservation" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

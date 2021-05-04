@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_LocationVoituresModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Details">
+          <Key>
+            <PropertyRef Name="ID_Details" />
+          </Key>
+          <Property Name="ID_Details" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="pass" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date_Entree" Type="date" />
+          <Property Name="time_Entree" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="ID_Member" />
+          </Key>
+          <Property Name="ID_Member" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mot_de_passe" Type="nvarchar" MaxLength="50" />
+          <Property Name="Admin_O_No" Type="int" />
+        </EntityType>
+        <EntityContainer Name="DB_LocationVoituresModelStoreContainer">
+          <EntitySet Name="Details" EntityType="Self.Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_LocationVoituresModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="LocationVoituresEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Logins" EntityType="DB_LocationVoituresModel.Login" />
+          <EntitySet Name="Details" EntityType="DB_LocationVoituresModel.Detail" />
+        </EntityContainer>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="ID_Member" />
+          </Key>
+          <Property Name="ID_Member" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mot_de_passe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Admin_O_No" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Detail">
+          <Key>
+            <PropertyRef Name="ID_Details" />
+          </Key>
+          <Property Name="ID_Details" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Entree" Type="DateTime" Precision="0" />
+          <Property Name="time_Entree" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_LocationVoituresModelStoreContainer" CdmEntityContainer="LocationVoituresEntities">
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="DB_LocationVoituresModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="Admin_O_No" ColumnName="Admin_O_No" />
+                <ScalarProperty Name="Mot_de_passe" ColumnName="Mot_de_passe" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="ID_Member" ColumnName="ID_Member" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Details">
+            <EntityTypeMapping TypeName="DB_LocationVoituresModel.Detail">
+              <MappingFragment StoreEntitySet="Details">
+                <ScalarProperty Name="time_Entree" ColumnName="time_Entree" />
+                <ScalarProperty Name="Date_Entree" ColumnName="Date_Entree" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="ID_Details" ColumnName="ID_Details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

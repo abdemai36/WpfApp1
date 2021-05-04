@@ -1,0 +1,24 @@
+﻿<Page x:Class="WpfApp1.Dashboard"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1"
+      mc:Ignorable="d" 
+      d:DesignHeight="723" d:DesignWidth="1189"
+      Title="Dashboard" Background="White">
+
+    <Grid>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Stroke="Black" VerticalAlignment="Top" Width="200" Margin="179,65,0,0" RadiusX="4" RadiusY="4" StrokeThickness="0.5"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Stroke="Black" VerticalAlignment="Top" Width="200" Margin="504,65,0,0" RadiusX="4" RadiusY="4" StrokeThickness="0.5" RenderTransformOrigin="0.524,0.5"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Stroke="Black" VerticalAlignment="Top" Width="200" Margin="800,65,0,0" RadiusX="4" RadiusY="4" StrokeThickness="0.5"/>
+        <Label Content="Voiture Louées" HorizontalAlignment="Left" Margin="219,65,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Voiture disponible" HorizontalAlignment="Left" Margin="536,65,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Nombre de reservation" HorizontalAlignment="Left" Margin="815,65,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label x:Name="louer" Content="10" HorizontalAlignment="Left" Margin="253,113,0,0" VerticalAlignment="Top" FontSize="36"/>
+        <Label x:Name="dispo" Content="23" HorizontalAlignment="Left" Margin="578,113,0,0" VerticalAlignment="Top" FontSize="36"/>
+        <Label x:Name="reserv" Content="04" HorizontalAlignment="Left" Margin="876,113,0,0" VerticalAlignment="Top" FontSize="36"/>
+        <Image HorizontalAlignment="Left" Height="398" Margin="168,315,0,0" VerticalAlignment="Top" Width="832" Source="Assets/Graph.png"/>
+
+    </Grid>
+</Page>
